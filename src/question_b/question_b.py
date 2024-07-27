@@ -1,6 +1,6 @@
 def create_multiplication_table():
     table = []
-    for i in range(1, 6):
+    for i in range(1, 11):
         row = []
         for j in range(1, 11):
             row.append(i * j)
@@ -9,14 +9,26 @@ def create_multiplication_table():
 
 def display_multiplication_table(table):
     for row in table:
-        print(" ".join(map(str, row)))
+        print(" ".join(f"{num:2}" for num in row))
 
 def main():
     while True:
-        table = create_multiplication_table()
-        display_multiplication_table(table)
+        print("\nMenu:")
+        print("1 - Display multiplication table")
+        print("2 - Exit")
 
-        user_input = input("Do you want to create another table? (yes/no): ").strip().lower()
-        if user_input != 'yes':
+        choice = input("Enter your choice: ").strip()
+
+        if choice == '1':
+            table = create_multiplication_table()
+            display_multiplication_table(table)
+        elif choice == '2':
             print("Goodbye!")
             break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+
+
+

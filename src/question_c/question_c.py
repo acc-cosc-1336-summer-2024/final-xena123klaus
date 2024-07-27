@@ -1,5 +1,4 @@
 
-
 class Stock:
     def __init__(self, symbol, company_name):
         self.__symbol = symbol
@@ -7,10 +6,10 @@ class Stock:
 
     def get_symbol(self):
         return self.__symbol
-    
+
     def get_company_name(self):
         return self.__company_name
-    
+
 def stock_purchase_history():
     aapl = Stock("AAPL", "Apple Inc")
     cat = Stock("CAT", "Caterpillar")
@@ -19,16 +18,14 @@ def stock_purchase_history():
     msft = Stock("MSFT", "Microsoft")
 
     stocks = {
-        aapl.get_symbol(): aapl,
-        cat.get_symbol(): cat,
-        ek.get_symbol(): ek,
-        goog.get_symbol(): goog,
-        msft.get_symbol(): msft
+        aapl.get_symbol(): aapl.get_company_name(),
+        cat.get_symbol(): cat.get_company_name(),
+        ek.get_symbol(): ek.get_company_name(),
+        goog.get_symbol(): goog.get_company_name(),
+        msft.get_symbol(): msft.get_company_name()
     }
+    return stocks
 
-    print("Stock Purchase History:")
-    for symbol, stock in stocks.items():
-        print(f"Symbol: {stock.get_symbol()}, Company: {stock.get_company_name()}")
 
 def main():
     while True:
@@ -39,7 +36,10 @@ def main():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            stock_purchase_history()
+            history = stock_purchase_history()
+            print("Stock Purchase History:")
+            for symbol, company in history.items():
+                print(f"Symbol: {symbol}, Company: {company}")
         elif choice == '2':
             print("Goodbye!")
             break
